@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>ToDoList</h1>
+    <br/>
+    <form id="todoform">
+        <div>
+            <input type="text" id="inputvalue" />
+            <button type="submit" class="btn">Add To Do</button>
+        </div>
+       
+    </form>
+    <section class="todo_list">
+            
+    </section>
+    <script>
+        const maintodo=document.querySelector(".todo_list")
+        
+        const inputval=document.querySelector("#inputvalue");
+        const gettodolist=()=>{
+           return JSON.parse(localStorage.getItem("todolist")) || [];
+        }
+        let localtodo=gettodolist();
+
+
+        const rendertodo=(todo)=>{
+         const divElement=document.createElement("div");
+         divElement.classList.add("main_todo_div");
+         divElement.innerHTML=`<li> ${todo}</li> <button class="delbtn">Delete</button>`
+         maintodo.append(divElement);
+
+         divElement.querySelector(".delbtn").addEventListener("click", () => {
+                localtodo = localtodo.filter(item => item !== todo);
+                localStorage.setItem("todolist", JSON.stringify(localtodo));
+                maintodo.removeChild(divElement);
+            });
+
+        }
+       const  addtodo=(e)=>{
+        const todolistvalue=inputval.value.trim();
+        if (!todolistvalue) return;
+
+            localtodo.push(todolistvalue);
+            localtodo = [...new Set(localtodo)];
+            localStorage.setItem("todolist", JSON.stringify(localtodo));
+
+            renderTodo(todolistvalue);
+            inputval.value = "";
+        }
+       
+        const showtodolist = () => {
+            maintodo.innerHTML = "";
+            localtodo.forEach(todo => rendertodo(todo));
+        }
+
+        showtodolist();
+
+        document.querySelector("#todoform").addEventListener("submit", addtodo);
+    
+
+    </script>
+</body>
+</html>
