@@ -39,10 +39,10 @@ Welcome to my collection of basic JavaScript projects! These projects were creat
 
 ## What I Learned
 
-- DOM Manipulation**: How to interact with and change the structure of the web page using JavaScript.
-- Event Handling**: How to respond to user inputs and actions like clicks and keystrokes.
-- CSS Animations**: How to create simple yet effective animations using CSS and JavaScript.
-- APIs**: How to fetch data from external sources and display it dynamically on a webpage.
+- DOM Manipulation: How to interact with and change the structure of the web page using JavaScript.
+- Event Handling: How to respond to user inputs and actions like clicks and keystrokes.
+- CSS Animations: How to create simple yet effective animations using CSS and JavaScript.
+- APIs: How to fetch data from external sources and display it dynamically on a webpage.
 
 ## Future Improvements
 
